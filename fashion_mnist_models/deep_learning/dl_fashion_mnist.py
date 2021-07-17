@@ -97,8 +97,8 @@ print("\nThe shape of the images list is: {}".format(images.shape))
 print("The shape of the labels list is: {}\n".format(labels.shape))
 
 
-# perform_attack("FGSM", model, epsilons=[
-#                0.001, 0.005, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1], images=images, labels=labels)
+perform_attack("FGSM", model, epsilons=[
+               0.001, 0.005, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1], images=images, labels=labels)
 
 # # need to update which default parameters of CW to use
 # # perform_attack(choose_attack = "CarliniWagner", model = model, epsilons = [0.001, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06])

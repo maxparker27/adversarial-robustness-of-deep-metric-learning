@@ -16,6 +16,8 @@ def train(dataloader, model, loss_fn, optimizer, device):
         if batch % 100 == 0:
             loss, current = loss.item(), batch * len(X)
             print(f"loss: {loss:>7f}  [{current:>5d}/{size:>5d}]")
+    print("End of Epoch. Training Loss = {}\n".format(loss))
+    training_loss.append(loss)
 
 
 def test(dataloader, model, loss_fn, device):
@@ -32,3 +34,5 @@ def test(dataloader, model, loss_fn, device):
     correct /= size
     print(
         f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
+    print("End of Epoch. Test Loss = {}\n".format(test_loss))
+    testing_loss.append(test_loss)
