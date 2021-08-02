@@ -104,21 +104,3 @@ perform_attack("FGSM", model, epsilons=[
 # perform_attack(choose_attack = "CarliniWagner", model = model, epsilons = [0.001, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06])
 perform_attack("PGD", model, epsilons=[
                0.001, 0.005, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1], images=images, labels=labels)
-
-
-# fix this function -> seems to be giving a weird output
-def test_adversarials(adversarials, labels, model):
-    size = len(test_dataloader.dataset)
-    model.eval()
-    correct = 0
-    for X, y in zip(adversarials, labels):
-        X, y = X.to(device), y.to(device)
-        pred = model(X)
-        print(pred)
-        break
-        correct += (pred.argmax(1) == y).type(torch.float).sum().item()
-    correct /= size
-    print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%")
-
-
-# test_adversarials(raw_advs, labels, model)
